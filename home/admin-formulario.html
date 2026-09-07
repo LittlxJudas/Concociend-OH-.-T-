@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Conociend[OH].[T] — Panel administrador</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body data-page="admin">
+
+  <!-- ============ NAVBAR ============ -->
+  <header class="navbar" data-navbar>
+    <div class="container navbar__inner">
+      <a href="index.html" class="navbar__brand">
+        <span class="navbar__logo" title="[LOGO — REEMPLAZAR AQUÍ]"><img src="im/a1.png" width="300"></span>
+        <span class="navbar__name">Conociend[OH].[T]</span>
+      </a>
+      <nav class="navbar__links" aria-label="Navegación principal">
+        <a href="index.html" class="navbar__link" data-nav-link="home">🏠 Inicio</a>
+        <a href="leyes.html" class="navbar__link" data-nav-link="leyes">⚖️ Leyes</a>
+        <a href="lecturas.html" class="navbar__link" data-nav-link="lecturas">📚 Lecturas</a>
+        <a href="material-multimedia.html" class="navbar__link" data-nav-link="multimedia">🎬 Multimedia</a>
+        <a href="intervencion-on-site.html" class="navbar__link" data-nav-link="intervenciones">🤝 Intervenciones</a>
+        <a href="formulario.html" class="navbar__link" data-nav-link="formulario">💬 Opiniones</a>
+      </nav>
+      <button class="navbar__toggle" data-navbar-toggle aria-label="Abrir menú" aria-expanded="false">☰</button>
+    </div>
+    <div class="navbar__mobile" data-navbar-mobile>
+      <div class="navbar__mobile-inner">
+        <a href="index.html" class="navbar__mobile-link" data-nav-link="home">🏠 Inicio</a>
+        <a href="leyes.html" class="navbar__mobile-link" data-nav-link="leyes">⚖️ Leyes</a>
+        <a href="lecturas.html" class="navbar__mobile-link" data-nav-link="lecturas">📚 Lecturas</a>
+        <a href="material-multimedia.html" class="navbar__mobile-link" data-nav-link="multimedia">🎬 Multimedia</a>
+        <a href="intervencion-on-site.html" class="navbar__mobile-link" data-nav-link="intervenciones">🤝 Intervencion</a>
+        <a href="formulario.html" class="navbar__mobile-link" data-nav-link="formulario">💬 Opiniones</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-enter">
+
+    <!-- ============ ACCESO ============ -->
+    <section class="section--tight" id="admin-gate">
+      <div class="container" style="max-width: 420px;">
+        <span class="tag tag--lila">Acceso restringido</span>
+        <h1 style="font-size: 1.8rem; font-weight: 700; margin-top: 16px;">Panel administrador</h1>
+        <p class="text-soft" style="margin-top: 12px; font-size: 0.9rem;">
+          Ingresa la clave de acceso del equipo para ver las solicitudes recibidas.
+        </p>
+
+        <form class="form-card" id="admin-gate-form" style="margin-top: 24px;">
+          <div class="field">
+            <label for="admin-password">Clave de acceso</label>
+            <input type="password" id="admin-password" name="password" autocomplete="current-password" />
+          </div>
+          <p class="field__error" id="admin-gate-error" hidden>Clave incorrecta. Intenta nuevamente.</p>
+          <button type="submit" class="btn btn--dark" style="width:100%; justify-content:center; padding:14px;">Ingresar</button>
+        </form>
+
+        <p class="text-soft" style="margin-top:20px; font-size:0.75rem; font-style:italic;">
+          [NOTA EDITABLE] Este acceso es solo una barrera visual básica: la clave vive en el código fuente y las opiniones viven en una base de datos Firebase sin autenticación real. No está pensado para proteger información sensible en producción — reemplázalo por reglas de seguridad de Firebase y/o autenticación real.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ PANEL ============ -->
+    <section class="section--tight" id="admin-panel" hidden>
+      <div class="container">
+        <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:16px; flex-wrap:wrap;">
+          <div>
+            <span class="tag tag--lila">Panel administrador</span>
+            <h1 style="font-size: 1.8rem; font-weight: 700; margin-top: 16px;">Solicitudes recibidas</h1>
+            <p class="text-soft" style="margin-top: 8px; font-size: 0.9rem; max-width:560px;">
+              Revisa y gestiona las opiniones enviadas desde el formulario y las peticiones de intervención on-site. <strong>Las opiniones se guardan en Firebase</strong> (se comparten entre dispositivos); <strong>las intervenciones se guardan solo en este navegador</strong> (localStorage) mientras no se conecten a una base de datos.
+            </p>
+          </div>
+          <button type="button" class="btn btn--outline" id="admin-logout">Cerrar sesión</button>
+        </div>
+
+        <div style="display:flex; gap:8px; margin-top:32px;">
+          <button type="button" class="filter-chip active" data-admin-tab="formulario">💬 Opiniones</button>
+          <button type="button" class="filter-chip" data-admin-tab="intervenciones">🤝 Intervenciones</button>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:16px; margin-top:24px;">
+          <div class="searchbar">
+            <span class="icon">🔍</span>
+            <input type="search" id="admin-search" placeholder="Buscar en las solicitudes…" aria-label="Buscar solicitudes" />
+          </div>
+          <div class="filterbar" id="admin-status-filters"></div>
+        </div>
+
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:24px; flex-wrap:wrap;">
+          <p class="text-soft" style="font-size:0.85rem;"><span id="admin-count">0</span> solicitud(es)</p>
+          <div style="display:flex; gap:8px;">
+            <button type="button" class="btn btn--outline" id="admin-export" style="padding:8px 16px; font-size:0.8rem;">⬇ Exportar CSV</button>
+            <button type="button" class="btn" style="background:var(--rosa-100); padding:8px 16px; font-size:0.8rem;" id="admin-clear">Vaciar sección</button>
+          </div>
+        </div>
+
+        <div id="admin-empty-global" class="state-box state-box--empty" style="margin-top:24px;">
+          <span class="icon">📭</span>
+          <p class="text-soft">Todavía no se ha recibido ninguna solicitud en este navegador.</p>
+        </div>
+
+        <div id="admin-results" style="margin-top:16px;"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ MODAL DE DETALLE ============ -->
+  <div class="modal-overlay" id="admin-modal">
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="admin-modal-title">
+      <div class="modal-box__head">
+        <h2 id="admin-modal-title" style="font-size: 1.2rem; font-weight: 600;"></h2>
+        <button class="modal-box__close" data-modal-close aria-label="Cerrar">✕</button>
+      </div>
+      <div id="admin-modal-body"></div>
+    </div>
+  </div>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <img src="im/2.png" alt="Logo Conociend[OH].[T]" style="height:40px; width:auto;" />
+          <p class="footer__title">Conociend[OH].[T]</p>
+        </div>
+        <p class="footer__desc" style="margin-top:12px;">Un proyecto de concientización orientado a promover la reflexión sobre la importancia sociocultural de los estereotipos de género, fomentando la educación, el respeto, la igualdad y la eliminación de prejuicios presentes en la sociedad</p>
+      </div>
+      <div>
+        <p class="footer__heading">Navegación</p>
+        <ul class="footer__list">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="leyes.html">Leyes</a></li>
+          <li><a href="lecturas.html">Lecturas</a></li>
+          <li><a href="material-multimedia.html">Multimedia</a></li>
+          <li><a href="intervencion-on-site.html">Intervenciones</a></li>
+          <li><a href="formulario.html">Opiniones</a></li>
+          <li><a href="admin-formulario.html" style="opacity:0.7;">Panel administrador</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer__heading">Contacto</p>
+        <ul class="footer__list">
+          <li>[CORREO DE CONTACTO EDITABLE]</li>
+          <li><a href="http://instagram.com/conociendoh.t">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">© <span id="year"></span> Conociend[OH].[T] - Todos los derechos reservados. - De estudiantes de Pedagogia en Biologia, de teoría de la identidad de genero, de la Universidad de La Serena</div>
+  </footer>
+
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script src="js/main.js"></script>
+  <script src="js/admin-formulario.js"></script>
+</body>
+</html>

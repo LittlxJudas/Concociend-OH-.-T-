@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conociend[OH].[T] — Leyes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body data-page="leyes">
+
+  <!-- ============ NAVBAR ============ -->
+  <header class="navbar" data-navbar>
+    <div class="container navbar__inner">
+      <a href="index.html" class="navbar__brand">
+        <span class="navbar__logo" title="[LOGO — REEMPLAZAR AQUÍ]"><img src="im/a1.png" width="300"></span>
+        <span class="navbar__name">Conociend[OH].[T]</span>
+      </a>
+      <nav class="navbar__links" aria-label="Navegación principal">
+        <a href="index.html" class="navbar__link" data-nav-link="home">🏠 Inicio</a>
+        <a href="leyes.html" class="navbar__link" data-nav-link="leyes">⚖️ Leyes</a>
+        <a href="lecturas.html" class="navbar__link" data-nav-link="lecturas">📚 Lecturas</a>
+        <a href="material-multimedia.html" class="navbar__link" data-nav-link="multimedia">🎬 Multimedia</a>
+        <a href="intervencion-on-site.html" class="navbar__link" data-nav-link="intervenciones">🤝 Intervenciones</a>
+        <a href="formulario.html" class="navbar__link" data-nav-link="formulario">💬 Opiniones</a>
+      </nav>
+      <button class="navbar__toggle" data-navbar-toggle aria-label="Abrir menú" aria-expanded="false">☰</button>
+    </div>
+    <div class="navbar__mobile" data-navbar-mobile>
+      <div class="navbar__mobile-inner">
+        <a href="index.html" class="navbar__mobile-link" data-nav-link="home">🏠 Inicio</a>
+        <a href="leyes.html" class="navbar__mobile-link" data-nav-link="leyes">⚖️ Leyes</a>
+        <a href="lecturas.html" class="navbar__mobile-link" data-nav-link="lecturas">📚 Lecturas</a>
+        <a href="material-multimedia.html" class="navbar__mobile-link" data-nav-link="multimedia">🎬 Multimedia</a>
+        <a href="intervencion-on-site.html" class="navbar__mobile-link" data-nav-link="intervenciones">🤝 Intervencion</a>
+        <a href="formulario.html" class="navbar__mobile-link" data-nav-link="formulario">💬 Opiniones</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-enter">
+    <section class="section--tight">
+      <div class="container">
+        <span class="tag tag--lila">Biblioteca legal</span>
+        <h1 style="font-size: 2.2rem; font-weight: 700; margin-top: 16px;">Conoce tus derechos ⚖️</h1>
+        <p class="text-soft" style="margin-top: 12px; max-width: 640px;">
+          Encuentra información educativa sobre leyes y normativas relacionadas con la igualdad de género, la no discriminación y la protección de derechos. Conoce qué establecen y utiliza esta información como una herramienta para informarte y comprender mejor tus derechos.
+        </p>
+
+        <div style="display:flex; flex-direction:column; gap:16px; margin-top: 32px;">
+          <div class="searchbar">
+            <span class="icon">🔍</span>
+            <input type="search" id="law-search" placeholder="Buscar por nombre, número o categoría…" aria-label="Buscar leyes" />
+          </div>
+          <div class="filterbar" id="law-filters"></div>
+        </div>
+
+        <div id="law-results" style="margin-top: 40px;"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ MODAL DE DETALLE ============ -->
+  <div class="modal-overlay" id="law-modal">
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="law-modal-title">
+      <div class="modal-box__head">
+        <h2 id="law-modal-title" style="font-size: 1.3rem; font-weight: 600;"></h2>
+        <button class="modal-box__close" data-modal-close aria-label="Cerrar">✕</button>
+      </div>
+      <div id="law-modal-body" style="display:flex; flex-direction:column; gap:12px;"></div>
+    </div>
+  </div>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <img src="im/2.png" alt="Logo Conociend[OH].[T]" style="height:40px; width:auto;" />
+          <p class="footer__title">Conociend[OH].[T]</p>
+        </div>
+        <p class="footer__desc" style="margin-top:12px;">Un proyecto de concientización orientado a promover la reflexión sobre la importancia sociocultural de los estereotipos de género, fomentando la educación, el respeto, la igualdad y la eliminación de prejuicios presentes en la sociedad</p>
+      </div>
+      <div>
+        <p class="footer__heading">Navegación</p>
+        <ul class="footer__list">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="leyes.html">Leyes</a></li>
+          <li><a href="lecturas.html">Lecturas</a></li>
+          <li><a href="material-multimedia.html">Multimedia</a></li>
+          <li><a href="intervencion-on-site.html">Intervenciones</a></li>
+          <li><a href="formulario.html">Opiniones</a></li>
+          <li><a href="admin-formulario.html" style="opacity:0.7;">Panel administrador</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer__heading">Contacto</p>
+        <ul class="footer__list">
+          <li>[CORREO DE CONTACTO EDITABLE]</li>
+          <li><a href="http://instagram.com/conociendoh.t">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">© <span id="year"></span> Conociend[OH].[T] - Todos los derechos reservados. - De estudiantes de Pedagogia en Biologia, de teoría de la identidad de genero, de la Universidad de La Serena</div>
+  </footer>
+
+
+  <!-- ============ BOTÓN MOTIVACIONAL ============ -->
+  <div class="motivational" data-motivational>
+    <div class="motivational__panel" data-motivational-panel style="display:none;">
+      <p class="motivational__text" data-motivational-text></p>
+      <button class="motivational__btn" data-motivational-next>✨ Otra frase</button>
+    </div>
+    <button class="motivational__toggle" data-motivational-toggle aria-label="Ver frase motivacional" aria-expanded="false">💬</button>
+  </div>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script src="js/main.js"></script>
+  <script src="js/leyes.js"></script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conociend[OH].[T] — Opiniones</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body data-page="formulario">
+
+  <!-- ============ NAVBAR ============ -->
+  <header class="navbar" data-navbar>
+    <div class="container navbar__inner">
+      <a href="index.html" class="navbar__brand">
+        <span class="navbar__logo" title="[LOGO — REEMPLAZAR AQUÍ]"><img src="im/a1.png" width="300"></span>
+        <span class="navbar__name">Conociend[OH].[T]</span>
+      </a>
+      <nav class="navbar__links" aria-label="Navegación principal">
+        <a href="index.html" class="navbar__link" data-nav-link="home">🏠 Inicio</a>
+        <a href="leyes.html" class="navbar__link" data-nav-link="leyes">⚖️ Leyes</a>
+        <a href="lecturas.html" class="navbar__link" data-nav-link="lecturas">📚 Lecturas</a>
+        <a href="material-multimedia.html" class="navbar__link" data-nav-link="multimedia">🎬 Multimedia</a>
+        <a href="intervencion-on-site.html" class="navbar__link" data-nav-link="intervenciones">🤝 Intervencion</a>
+        <a href="formulario.html" class="navbar__link" data-nav-link="formulario">💬 Opiniones</a>
+      </nav>
+      <button class="navbar__toggle" data-navbar-toggle aria-label="Abrir menú" aria-expanded="false">☰</button>
+    </div>
+    <div class="navbar__mobile" data-navbar-mobile>
+      <div class="navbar__mobile-inner">
+        <a href="index.html" class="navbar__mobile-link" data-nav-link="home">🏠 Inicio</a>
+        <a href="leyes.html" class="navbar__mobile-link" data-nav-link="leyes">⚖️ Leyes</a>
+        <a href="lecturas.html" class="navbar__mobile-link" data-nav-link="lecturas">📚 Lecturas</a>
+        <a href="material-multimedia.html" class="navbar__mobile-link" data-nav-link="multimedia">🎬 Multimedia</a>
+        <a href="intervencion-on-site.html" class="navbar__mobile-link" data-nav-link="intervenciones">🤝 Intervenciones</a>
+        <a href="formulario.html" class="navbar__mobile-link" data-nav-link="formulario">💬 Opiniones</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-enter">
+
+    <!-- ============ FORMULARIO DE OPINIONES ============ -->
+    <section class="section--tight" id="form-section">
+      <div class="container" style="max-width: 720px;">
+        <span class="tag tag--rosa">Formulario de opiniones</span>
+        <h1 style="font-size: 2.2rem; font-weight: 700; margin-top: 16px;">🌟Tu opinión nos ayuda a mejorar🌟</h1>
+        <p class="text-soft" style="margin-top: 12px;">
+          Cuéntanos cómo fue tu experiencia en la plataforma. Califica tu experiencia, comparte tus comentarios y ayúdanos a seguir mejorando este espacio educativo para todos.</p>
+
+        <form class="form-card" id="request-form" novalidate>
+          <div class="field">
+            <label>¿Cómo calificarías tu experiencia?</label>
+            <div id="rating-stars" style="display:flex; gap:8px; margin-top:4px;" role="radiogroup" aria-label="Calificación de 1 a 5 estrellas"></div>
+            <input type="hidden" id="rating" name="rating" value="" />
+            <p class="field__error" id="error-rating" hidden></p>
+          </div>
+
+          <div class="field">
+            <label for="topic">¿Sobre qué es tu opinión?</label>
+            <select id="topic" name="topic">
+              <option value="general">La plataforma en general</option>
+              <option value="leyes">Biblioteca de leyes</option>
+              <option value="lecturas">Recomendación de lecturas</option>
+              <option value="multimedia">Material multimedia</option>
+              <option value="intervenciones">Intervenciones on-site</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+
+          <div class="field" id="field-comment">
+            <label for="comment">Tu opinión</label>
+            <textarea id="comment" name="comment" rows="5" placeholder="Cuéntanos qué te pareció, qué mejorarías o qué te gustaría encontrar aquí…"></textarea>
+            <p class="field__error" id="error-comment" hidden></p>
+          </div>
+
+          <div class="field" id="field-name">
+            <label for="name">Nombre (opcional)</label>
+            <input type="text" id="name" name="name" />
+          </div>
+
+          <div class="field" id="field-email">
+            <label for="email">Correo electrónico (opcional)</label>
+            <input type="email" id="email" name="email" />
+            <p class="field__error" id="error-email" hidden></p>
+          </div>
+
+          <p class="field__error" id="error-submit" hidden>[ERROR AL ENVIAR TU OPINIÓN — INTENTA NUEVAMENTE]</p>
+
+          <button type="submit" class="btn btn--dark" id="submit-btn" style="width:100%; justify-content:center; padding:14px;">
+            Enviar opinión
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ============ CONFIRMACIÓN ============ -->
+    <section class="form-success" id="form-success" hidden>
+      <span class="icon">✅</span>
+      <h1 style="font-size: 1.8rem; font-weight: 600; margin-top: 20px;">
+        [MENSAJE DE CONFIRMACIÓN EDITABLE — ¡Gracias por tu opinión!]
+      </h1>
+      <p class="text-soft" style="margin-top: 12px;">
+        [TEXTO EDITABLE — tu comentario nos ayuda a mejorar la plataforma.]
+      </p>
+      <button type="button" class="btn btn--dark" id="reset-btn" style="margin-top: 32px;">Enviar otra opinión</button>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <img src="im/2.png" alt="Logo Conociend[OH].[T]" style="height:40px; width:auto;" />
+          <p class="footer__title">Conociend[OH].[T]</p>
+        </div>
+        <p class="footer__desc" style="margin-top:12px;">Un proyecto de concientización orientado a promover la reflexión sobre la importancia sociocultural de los estereotipos de género, fomentando la educación, el respeto, la igualdad y la eliminación de prejuicios presentes en la sociedad</p>
+      </div>
+      <div>
+        <p class="footer__heading">Navegación</p>
+        <ul class="footer__list">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="leyes.html">Leyes</a></li>
+          <li><a href="lecturas.html">Lecturas</a></li>
+          <li><a href="material-multimedia.html">Multimedia</a></li>
+          <li><a href="intervencion-on-site.html">Intervenciones</a></li>
+          <li><a href="formulario.html">Opiniones</a></li>
+          <li><a href="admin-formulario.html" style="opacity:0.7;">Panel administrador</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer__heading">Contacto</p>
+        <ul class="footer__list">
+          <li>[CORREO DE CONTACTO EDITABLE]</li>
+          <li><a href="http://instagram.com/conociendoh.t">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">© <span id="year"></span> Conociend[OH].[T] - Todos los derechos reservados. - De estudiantes de Pedagogia en Biologia, de teoría de la identidad de genero, de la Universidad de La Serena</div>
+  </footer>
+
+
+  <!-- ============ BOTÓN MOTIVACIONAL ============ -->
+  <div class="motivational" data-motivational>
+    <div class="motivational__panel" data-motivational-panel style="display:none;">
+      <p class="motivational__text" data-motivational-text></p>
+      <button class="motivational__btn" data-motivational-next>✨ Otra frase</button>
+    </div>
+    <button class="motivational__toggle" data-motivational-toggle aria-label="Ver frase motivacional" aria-expanded="false">💬</button>
+  </div>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script src="js/main.js"></script>
+  <script src="js/formulario.js"></script>
+</body>
+</html>

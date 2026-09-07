@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conociend[OH].[T] — Intervenciones</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body data-page="intervenciones">
+
+  <!-- ============ NAVBAR ============ -->
+  <header class="navbar" data-navbar>
+    <div class="container navbar__inner">
+      <a href="index.html" class="navbar__brand">
+        <span class="navbar__logo" title="[LOGO — REEMPLAZAR AQUÍ]"><img src="im/a1.png" width="300"></span>
+        <span class="navbar__name">Conociend[OH].[T]</span>
+      </a>
+      <nav class="navbar__links" aria-label="Navegación principal">
+        <a href="index.html" class="navbar__link" data-nav-link="home">🏠 Inicio</a>
+        <a href="leyes.html" class="navbar__link" data-nav-link="leyes">⚖️ Leyes</a>
+        <a href="lecturas.html" class="navbar__link" data-nav-link="lecturas">📚 Lecturas</a>
+        <a href="material-multimedia.html" class="navbar__link" data-nav-link="multimedia">🎬 Multimedia</a>
+        <a href="intervencion-on-site.html" class="navbar__link" data-nav-link="intervenciones">🤝 Intervenciones</a>
+        <a href="formulario.html" class="navbar__link" data-nav-link="formulario">💬 Opiniones</a>
+      </nav>
+      <button class="navbar__toggle" data-navbar-toggle aria-label="Abrir menú" aria-expanded="false">☰</button>
+    </div>
+    <div class="navbar__mobile" data-navbar-mobile>
+      <div class="navbar__mobile-inner">
+        <a href="index.html" class="navbar__mobile-link" data-nav-link="home">🏠 Inicio</a>
+        <a href="leyes.html" class="navbar__mobile-link" data-nav-link="leyes">⚖️ Leyes</a>
+        <a href="lecturas.html" class="navbar__mobile-link" data-nav-link="lecturas">📚 Lecturas</a>
+        <a href="material-multimedia.html" class="navbar__mobile-link" data-nav-link="multimedia">🎬 Multimedia</a>
+        <a href="intervencion-on-site.html" class="navbar__mobile-link" data-nav-link="intervenciones">🤝 Intervencion</a>
+        <a href="formulario.html" class="navbar__mobile-link" data-nav-link="formulario">💬 Opiniones</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-enter">
+    <section class="section--tight">
+      <div class="container">
+        <span class="tag tag--rosa">Intervencion on-site</span>
+        <h1 style="font-size: 2.2rem; font-weight: 700; margin-top: 16px;">🤝Aprendamos juntos</h1>
+        <p class="text-soft" style="margin-top: 12px; max-width: 640px;">
+          Una instancia educativa y participativa realizada en la Universidad de La Serena, enfocada en aprender, conversar y reflexionar sobre los estereotipos de género, la igualdad y su impacto en nuestra sociedad. A través de esta intervención, buscamos generar conciencia y promover una mirada más crítica, respetuosa e inclusiva.
+        </p>
+
+        <div class="grid grid--md-3" style="margin-top: 40px;" id="intervention-catalog"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ MODAL DE SOLICITUD ============ -->
+  <div class="modal-overlay" id="intervention-modal">
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="intervention-modal-title">
+      <div class="modal-box__head">
+        <h2 id="intervention-modal-title" style="font-size: 1.2rem; font-weight: 600;"></h2>
+        <button class="modal-box__close" data-modal-close aria-label="Cerrar">✕</button>
+      </div>
+
+      <form id="intervention-form" style="display:flex; flex-direction:column; gap:18px;">
+        <input type="hidden" id="intervention-type-input" />
+
+        <div class="field" id="field-i-institution">
+          <label for="i-institution">Institución u organización</label>
+          <input type="text" id="i-institution" name="institution" />
+          <p class="field__error" id="error-i-institution" hidden></p>
+        </div>
+
+        <div class="field" id="field-i-place">
+          <label for="i-place">Comuna / lugar</label>
+          <input type="text" id="i-place" name="place" />
+          <p class="field__error" id="error-i-place" hidden></p>
+        </div>
+
+        <div class="field">
+          <label for="i-date">Fecha tentativa (opcional)</label>
+          <input type="date" id="i-date" name="date" />
+        </div>
+
+        <div class="field" id="field-i-contact">
+          <label for="i-contact">Nombre de contacto</label>
+          <input type="text" id="i-contact" name="contact" />
+          <p class="field__error" id="error-i-contact" hidden></p>
+        </div>
+
+        <div class="field" id="field-i-email">
+          <label for="i-email">Correo de contacto</label>
+          <input type="email" id="i-email" name="email" />
+          <p class="field__error" id="error-i-email" hidden></p>
+        </div>
+
+        <div class="field">
+          <label for="i-message">Mensaje adicional (opcional)</label>
+          <textarea id="i-message" name="message" rows="3"></textarea>
+        </div>
+
+        <p class="field__error" id="intervention-error" hidden>[ERROR AL ENVIAR LA SOLICITUD — INTENTA NUEVAMENTE]</p>
+
+        <button type="submit" class="btn btn--dark" id="intervention-submit-btn" style="width:100%; justify-content:center; padding:14px;">
+          Enviar solicitud
+        </button>
+      </form>
+
+      <div id="intervention-success" hidden style="text-align:center; padding:24px 0;">
+        <span class="icon" style="font-size:2.2rem;">✅</span>
+        <h3 style="margin-top:16px; font-size:1.1rem; font-weight:600;">[MENSAJE EDITABLE — Recibimos tu solicitud de intervención]</h3>
+        <p class="text-soft" style="margin-top:8px; font-size:0.9rem;">[TEXTO EDITABLE — te contactaremos para coordinar los detalles.]</p>
+        <button type="button" class="btn btn--outline" style="margin-top:20px;" data-modal-close>Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <img src="im/2.png" alt="Logo Conociend[OH].[T]" style="height:40px; width:auto;" />
+          <p class="footer__title">Conociend[OH].[T]</p>
+        </div>
+        <p class="footer__desc" style="margin-top:12px;">Un proyecto de concientización orientado a promover la reflexión sobre la importancia sociocultural de los estereotipos de género, fomentando la educación, el respeto, la igualdad y la eliminación de prejuicios presentes en la sociedad</p>
+      </div>
+      <div>
+        <p class="footer__heading">Navegación</p>
+        <ul class="footer__list">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="leyes.html">Leyes</a></li>
+          <li><a href="lecturas.html">Lecturas</a></li>
+          <li><a href="material-multimedia.html">Multimedia</a></li>
+          <li><a href="intervencion-on-site.html">Intervenciones</a></li>
+          <li><a href="formulario.html">Opiniones</a></li>
+          <li><a href="admin-formulario.html" style="opacity:0.7;">Panel administrador</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer__heading">Contacto</p>
+        <ul class="footer__list">
+          <li>[CORREO DE CONTACTO EDITABLE]</li>
+          <li><a href="http://instagram.com/conociendoh.t">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">© <span id="year"></span> Conociend[OH].[T] - Todos los derechos reservados. - De estudiantes de Pedagogia en Biologia, de teoría de la identidad de genero, de la Universidad de La Serena</div>
+  </footer>
+
+
+  <!-- ============ BOTÓN MOTIVACIONAL ============ -->
+  <div class="motivational" data-motivational>
+    <div class="motivational__panel" data-motivational-panel style="display:none;">
+      <p class="motivational__text" data-motivational-text></p>
+      <button class="motivational__btn" data-motivational-next>✨ Otra frase</button>
+    </div>
+    <button class="motivational__toggle" data-motivational-toggle aria-label="Ver frase motivacional" aria-expanded="false">💬</button>
+  </div>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script src="js/main.js"></script>
+  <script src="js/intervenciones.js"></script>
+</body>
+</html>
